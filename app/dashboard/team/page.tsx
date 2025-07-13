@@ -1,12 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -15,79 +21,98 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { MoreHorizontal, Mail, Phone, MapPin, Edit, Trash2, UserPlus } from "lucide-react"
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  MoreHorizontal,
+  Mail,
+  Phone,
+  MapPin,
+  Edit,
+  Trash2,
+  UserPlus,
+} from "lucide-react";
 
 interface TeamMember {
-  id: string
-  name: string
-  email: string
-  role: "Admin" | "Editor" | "Viewer"
-  department: string
-  status: "Active" | "Inactive"
-  joinDate: string
-  avatar?: string
-  phone?: string
-  location?: string
-  projects: string[]
+  id: string;
+  name: string;
+  email: string;
+  role: "Admin" | "Editor" | "Viewer";
+  department: string;
+  status: "Active" | "Inactive";
+  joinDate: string;
+  avatar?: string;
+  phone?: string;
+  location?: string;
+  projects: string[];
 }
 
 export default function TeamPage() {
   const [members, setMembers] = useState<TeamMember[]>([
     {
       id: "1",
-      name: "John Doe",
-      email: "john.doe@company.com",
+      name: "Kana Max",
+      email: "kanamax00@gmail.com",
       role: "Admin",
-      department: "Engineering",
+      department: "Technique",
       status: "Active",
-      joinDate: "2023-01-15",
-      phone: "+1 (555) 123-4567",
-      location: "New York, NY",
-      projects: ["Website Redesign", "Mobile App Development"],
+      joinDate: "2025-01-15",
+      phone: "+698 765 432",
+      location: "Douala, Cameroun",
+      projects: ["Refonte du site web", "Développement application mobile"],
     },
     {
       id: "2",
-      name: "Sarah Miller",
-      email: "sarah.miller@company.com",
+      name: "John Doe",
+      email: "john.doe@company.com",
       role: "Editor",
-      department: "Design",
+      department: "Technique",
       status: "Active",
-      joinDate: "2023-03-20",
-      phone: "+1 (555) 234-5678",
-      location: "San Francisco, CA",
-      projects: ["Website Redesign", "Marketing Campaign"],
+      joinDate: "2025-01-15",
+      phone: "+698 765 432",
+      location: "Douala, Cameroun",
+      projects: ["Refonte du site web", "Développement application mobile"],
     },
     {
       id: "3",
-      name: "Alex Brown",
-      email: "alex.brown@company.com",
+      name: "Test 2",
+      email: "test2@test.com",
       role: "Editor",
       department: "Marketing",
       status: "Active",
-      joinDate: "2023-05-10",
-      phone: "+1 (555) 345-6789",
-      location: "Austin, TX",
-      projects: ["Marketing Campaign"],
+      joinDate: "2025-05-10",
+      phone: "+653 456 789",
+      location: "Douala, Cameroun",
+      projects: ["Campagne marketing"],
     },
     {
       id: "4",
-      name: "Kate Lee",
-      email: "kate.lee@company.com",
+      name: "Test3",
+      email: "test3@test.com",
       role: "Viewer",
       department: "Engineering",
       status: "Inactive",
-      joinDate: "2023-07-01",
-      phone: "+1 (555) 456-7890",
-      location: "Seattle, WA",
-      projects: ["Mobile App Development"],
+      joinDate: "2025-07-01",
+      phone: "+654 567 890",
+      location: "Douala, Cameroun",
+      projects: ["Développement application mobile"],
     },
-  ])
+  ]);
 
-  const [isInviteDialogOpen, setIsInviteDialogOpen] = useState(false)
-  const [editingMember, setEditingMember] = useState<TeamMember | null>(null)
+  const [isInviteDialogOpen, setIsInviteDialogOpen] = useState(false);
+  const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -95,7 +120,7 @@ export default function TeamPage() {
     department: "",
     phone: "",
     location: "",
-  })
+  });
 
   const handleInviteMember = () => {
     const newMember: TeamMember = {
@@ -109,8 +134,8 @@ export default function TeamPage() {
       phone: formData.phone,
       location: formData.location,
       projects: [],
-    }
-    setMembers([...members, newMember])
+    };
+    setMembers([...members, newMember]);
     setFormData({
       name: "",
       email: "",
@@ -118,12 +143,12 @@ export default function TeamPage() {
       department: "",
       phone: "",
       location: "",
-    })
-    setIsInviteDialogOpen(false)
-  }
+    });
+    setIsInviteDialogOpen(false);
+  };
 
   const handleEditMember = (member: TeamMember) => {
-    setEditingMember(member)
+    setEditingMember(member);
     setFormData({
       name: member.name,
       email: member.email,
@@ -131,15 +156,17 @@ export default function TeamPage() {
       department: member.department,
       phone: member.phone || "",
       location: member.location || "",
-    })
-  }
+    });
+  };
 
   const handleUpdateMember = () => {
-    if (!editingMember) return
+    if (!editingMember) return;
 
-    const updatedMembers = members.map((m) => (m.id === editingMember.id ? { ...m, ...formData } : m))
-    setMembers(updatedMembers)
-    setEditingMember(null)
+    const updatedMembers = members.map((m) =>
+      m.id === editingMember.id ? { ...m, ...formData } : m
+    );
+    setMembers(updatedMembers);
+    setEditingMember(null);
     setFormData({
       name: "",
       email: "",
@@ -147,41 +174,51 @@ export default function TeamPage() {
       department: "",
       phone: "",
       location: "",
-    })
-  }
+    });
+  };
 
   const handleDeleteMember = (id: string) => {
-    setMembers(members.filter((m) => m.id !== id))
-  }
+    setMembers(members.filter((m) => m.id !== id));
+  };
 
   const toggleMemberStatus = (id: string) => {
-    setMembers(members.map((m) => (m.id === id ? { ...m, status: m.status === "Active" ? "Inactive" : "Active" } : m)))
-  }
+    setMembers(
+      members.map((m) =>
+        m.id === id
+          ? { ...m, status: m.status === "Active" ? "Inactive" : "Active" }
+          : m
+      )
+    );
+  };
 
   const getRoleColor = (role: string) => {
     switch (role) {
       case "Admin":
-        return "bg-red-100 text-red-800"
+        return "bg-red-100 text-red-800";
       case "Editor":
-        return "bg-blue-100 text-blue-800"
+        return "bg-blue-100 text-blue-800";
       case "Viewer":
-        return "bg-green-100 text-green-800"
+        return "bg-green-100 text-green-800";
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-100 text-gray-800";
     }
-  }
+  };
 
   const getStatusColor = (status: string) => {
-    return status === "Active" ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-800"
-  }
+    return status === "Active"
+      ? "bg-green-100 text-green-800"
+      : "bg-gray-100 text-gray-800";
+  };
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Team</h1>
-          <p className="text-muted-foreground">Manage team members, roles, and permissions</p>
+          <h1 className="text-3xl font-bold tracking-tight">Équipe</h1>
+          <p className="text-muted-foreground">
+            Gérer les membres de l'équipe, les rôles et les autorisations
+          </p>
         </div>
         <Dialog open={isInviteDialogOpen} onOpenChange={setIsInviteDialogOpen}>
           <DialogTrigger asChild>
@@ -193,7 +230,9 @@ export default function TeamPage() {
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Invite Team Member</DialogTitle>
-              <DialogDescription>Send an invitation to a new team member to join your workspace.</DialogDescription>
+              <DialogDescription>
+                Send an invitation to a new team member to join your workspace.
+              </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid gap-2">
@@ -201,7 +240,9 @@ export default function TeamPage() {
                 <Input
                   id="name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   placeholder="Enter full name"
                 />
               </div>
@@ -211,7 +252,9 @@ export default function TeamPage() {
                   id="email"
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="Enter email address"
                 />
               </div>
@@ -220,7 +263,9 @@ export default function TeamPage() {
                   <Label htmlFor="role">Role</Label>
                   <Select
                     value={formData.role}
-                    onValueChange={(value: "Admin" | "Editor" | "Viewer") => setFormData({ ...formData, role: value })}
+                    onValueChange={(value: "Admin" | "Editor" | "Viewer") =>
+                      setFormData({ ...formData, role: value })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select role" />
@@ -237,7 +282,9 @@ export default function TeamPage() {
                   <Input
                     id="department"
                     value={formData.department}
-                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, department: e.target.value })
+                    }
                     placeholder="Department"
                   />
                 </div>
@@ -247,7 +294,9 @@ export default function TeamPage() {
                 <Input
                   id="phone"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
                   placeholder="Phone number"
                 />
               </div>
@@ -256,7 +305,9 @@ export default function TeamPage() {
                 <Input
                   id="location"
                   value={formData.location}
-                  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, location: e.target.value })
+                  }
                   placeholder="City, State"
                 />
               </div>
@@ -282,10 +333,14 @@ export default function TeamPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Members</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Active Members
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{members.filter((m) => m.status === "Active").length}</div>
+            <div className="text-2xl font-bold">
+              {members.filter((m) => m.status === "Active").length}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -293,7 +348,9 @@ export default function TeamPage() {
             <CardTitle className="text-sm font-medium">Departments</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{new Set(members.map((m) => m.department)).size}</div>
+            <div className="text-2xl font-bold">
+              {new Set(members.map((m) => m.department)).size}
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -301,7 +358,9 @@ export default function TeamPage() {
             <CardTitle className="text-sm font-medium">Admins</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{members.filter((m) => m.role === "Admin").length}</div>
+            <div className="text-2xl font-bold">
+              {members.filter((m) => m.role === "Admin").length}
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -338,10 +397,15 @@ export default function TeamPage() {
                       <Edit className="mr-2 h-4 w-4" />
                       Edit
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => toggleMemberStatus(member.id)}>
+                    <DropdownMenuItem
+                      onClick={() => toggleMemberStatus(member.id)}
+                    >
                       {member.status === "Active" ? "Deactivate" : "Activate"}
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleDeleteMember(member.id)} className="text-red-600">
+                    <DropdownMenuItem
+                      onClick={() => handleDeleteMember(member.id)}
+                      className="text-red-600"
+                    >
                       <Trash2 className="mr-2 h-4 w-4" />
                       Remove
                     </DropdownMenuItem>
@@ -351,8 +415,12 @@ export default function TeamPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <Badge className={getRoleColor(member.role)}>{member.role}</Badge>
-                <Badge className={getStatusColor(member.status)}>{member.status}</Badge>
+                <Badge className={getRoleColor(member.role)}>
+                  {member.role}
+                </Badge>
+                <Badge className={getStatusColor(member.status)}>
+                  {member.status}
+                </Badge>
               </div>
 
               <div className="space-y-2 text-sm">
@@ -396,11 +464,16 @@ export default function TeamPage() {
       </div>
 
       {/* Edit Member Dialog */}
-      <Dialog open={!!editingMember} onOpenChange={() => setEditingMember(null)}>
+      <Dialog
+        open={!!editingMember}
+        onOpenChange={() => setEditingMember(null)}
+      >
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit Team Member</DialogTitle>
-            <DialogDescription>Update team member information and permissions.</DialogDescription>
+            <DialogDescription>
+              Update team member information and permissions.
+            </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
@@ -408,7 +481,9 @@ export default function TeamPage() {
               <Input
                 id="edit-name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 placeholder="Enter full name"
               />
             </div>
@@ -418,7 +493,9 @@ export default function TeamPage() {
                 id="edit-email"
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 placeholder="Enter email address"
               />
             </div>
@@ -427,7 +504,9 @@ export default function TeamPage() {
                 <Label htmlFor="edit-role">Role</Label>
                 <Select
                   value={formData.role}
-                  onValueChange={(value: "Admin" | "Editor" | "Viewer") => setFormData({ ...formData, role: value })}
+                  onValueChange={(value: "Admin" | "Editor" | "Viewer") =>
+                    setFormData({ ...formData, role: value })
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select role" />
@@ -444,7 +523,9 @@ export default function TeamPage() {
                 <Input
                   id="edit-department"
                   value={formData.department}
-                  onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, department: e.target.value })
+                  }
                   placeholder="Department"
                 />
               </div>
@@ -454,7 +535,9 @@ export default function TeamPage() {
               <Input
                 id="edit-phone"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
                 placeholder="Phone number"
               />
             </div>
@@ -463,7 +546,9 @@ export default function TeamPage() {
               <Input
                 id="edit-location"
                 value={formData.location}
-                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, location: e.target.value })
+                }
                 placeholder="City, State"
               />
             </div>
@@ -476,5 +561,5 @@ export default function TeamPage() {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }

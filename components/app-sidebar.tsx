@@ -66,7 +66,7 @@ const navigation = [
     title: "Collaboration",
     items: [
       { title: "Team", url: "/dashboard/team", icon: Users },
-      { title: "Messages", url: "/dashboard/messages", icon: MessageSquare },
+      // { title: "Messages", url: "/dashboard/messages", icon: MessageSquare },
       { title: "Files", url: "/dashboard/files", icon: FileText },
     ],
   },
@@ -138,7 +138,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   };
 
   return (
-    <Sidebar {...props}>
+    <Sidebar {...props} className="bg-white">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-4 py-2">
           {/* <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">

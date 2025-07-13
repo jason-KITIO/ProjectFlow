@@ -89,12 +89,12 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground">Welcome back! Here's what's happening with your projects.</p>
+          <h1 className="text-3xl font-bold tracking-tight">Tableau de bord</h1>
+          <p className="text-muted-foreground">Bienvenue ! Voici l'état d'avancement de vos projets.</p>
         </div>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
-          New Project
+          Nouveau projet
         </Button>
       </div>
 
